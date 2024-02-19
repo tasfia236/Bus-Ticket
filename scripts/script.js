@@ -29,42 +29,48 @@ const btn = document.querySelectorAll(".btn");
             const seatTittle = document.getElementById('seat-tittle');
             const SelectedSeatCount = seatTittle.childElementCount;
             if(SelectedSeatCount < 4){
-                const p = document.createElement("p");
-                p.innerText =seat;
-                seatTittle.appendChild(p);
-                
-                button.style.backgroundColor = '#1DD100';
+            //    console.log(seatTittle.innerText.includes(seat));
+                const SelectSeat = seatTittle.innerText.includes(seat);
+                if(SelectSeat === false){
+                    const p = document.createElement("p");
+                    p.innerText =seat;
+                    seatTittle.appendChild(p);
+                    button.style.backgroundColor = '#1DD100';
 
-                const price = document.getElementById('price');
-                const h1 = document.createElement("h1");
-                const prices = parseFloat(
-                    h1.innerText ="550"
-                
-                )
-                // console.log(typeof(prices))
-                price.appendChild(h1);
-            
-            
-
-                const seatClass = document.getElementById('seat-class');
-                const h2 = document.createElement("h2");
-                h2.innerText ="Economy";
-                seatClass.appendChild(h2);
+                    const price = document.getElementById('price');
+                    const h1 = document.createElement("h1");
+                    const prices = parseFloat(
+                        h1.innerText ="550"
                     
-                // price calculation
-                totalPrice += prices;
-                // console.log(totalPrice)
-                document.getElementById('total').innerText=totalPrice
-                document.getElementById('grand-total').innerText=totalPrice
+                    )
+                    // console.log(typeof(prices))
+                    price.appendChild(h1);
+                
+                
+
+                    const seatClass = document.getElementById('seat-class');
+                    const h2 = document.createElement("h2");
+                    h2.innerText ="Economy";
+                    seatClass.appendChild(h2);
+                        
+                    // price calculation
+                    totalPrice += prices;
+                    // console.log(totalPrice)
+                    document.getElementById('total').innerText=totalPrice
+                    document.getElementById('grand-total').innerText=totalPrice
 
 
-                const seatCount = document.getElementById('seat-count').innerText=count;
-                if(seatCount < 4){
-                count ++;
+                    const seatCount = document.getElementById('seat-count').innerText=count;
+                    if(seatCount < 4){
+                    count ++;
+                    }
+
+                    const seatL = document.getElementById('seat-left').innerText=seatLeft;
+                    seatLeft --;
                 }
-
-                const seatL = document.getElementById('seat-left').innerText=seatLeft;
-                seatLeft --;
+                else{
+                    alert("This Seat has been filled. Please select another seat")
+                }
             }
             else {
                 alert("You cannot booked more than 4 seat");
@@ -91,15 +97,17 @@ if( inputField === "NEW15" || inputField === "Couple 20"){
 // input field gayebul hawa
    if(inputField === "NEW15" ){
     const discountPrice = document.getElementById('grand-total');
-    const discountAmount = totalPrice * 0.2;
+    const discountAmount = totalPrice * 0.15;
+    const discountResult = totalPrice - discountAmount;
     // console.log(discountAmount)
-    discountPrice.innerText = discountAmount;
+    discountPrice.innerText = discountResult;
    }
    else if( inputField === "Couple 20"){
     const discountPrice = document.getElementById('grand-total');
-    const discountAmount = totalPrice * 0.15;
+    const discountAmount = totalPrice * 0.2;
+    const discountResult = totalPrice - discountAmount;
     // console.log(discountAmount)
-    discountPrice.innerText = discountAmount;
+    discountPrice.innerText = discountResult;
    }
 }
 else{
