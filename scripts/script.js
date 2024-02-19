@@ -1,9 +1,6 @@
 var totalPrice = 0;
 var count = 1;
 var seatLeft = 39;
-// if(seatLeft < 21){
-//     alert("You cannot booked more than 4 seat");
-// }
 
 function scrollSection() {
     const section = document.getElementById('Select-seat');
@@ -11,16 +8,6 @@ function scrollSection() {
     }
 
 const btn = document.querySelectorAll(".btn");
-   
-// for(let i=0; i< btn.length; i++){
-//     const button = btn[i];
-    // console.log(button)
-    // button.addEventListener("click", function(){
-    //     // console.log("clicked")
-    //      // get the seat
-    //      var innerText = this.innerText;
-    //      console.log(innerText);  
-    // });
     btn.forEach(function(button) {
         button.addEventListener('click', function() {
            // button.style.backgroundColor = '#1DD100';
@@ -82,7 +69,7 @@ const btn = document.querySelectorAll(".btn");
         });
     });
 
-// calculating the discount
+// Discount Calculated
 
 const btnApply =document.getElementById('btn-apply');
 btnApply.addEventListener('click', function(){
@@ -116,4 +103,23 @@ else{
 
 
 })
-   
+
+const updateButton = document.getElementById("updateDetails");
+const dialog = document.getElementById("my_modal_1");
+
+
+function openCheck(dialog) {
+    if (dialog.open) {
+        console.log("Dialog open");
+    }
+}
+
+updateButton.addEventListener("click", function() {
+    if(totalPrice > 0){
+        dialog.showModal();
+        openCheck(dialog);
+    }
+    else{
+        alert("Buy Ticket");
+    }
+});
